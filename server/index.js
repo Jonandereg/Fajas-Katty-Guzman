@@ -14,6 +14,6 @@ db.once('open', () => {
   console.log('Database in space 🛰'); //eslint-disable-line no-console
 
   app.listen(3001, () => {
-    console.log('listening in part of space: http://localhost:3001 🛰'); //eslint-disable-line no-console
+    console.log('listening in part of space: http://localhost:3001 🛰');
   });
 });
