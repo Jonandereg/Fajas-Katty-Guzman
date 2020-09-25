@@ -1,7 +1,7 @@
 import React ,{useState,useEffect} from 'react';
 import { getUsers } from './services/apiServices'
-import Testing from './components/test'
 import './styles/App.css';
+import Homepage from './pages/home/home';
 
 
 function App() {
@@ -14,7 +14,7 @@ useEffect(() => {
 
   return (
     <div className="App">
-      <Testing  myusers={users} />
+      <Homepage/>
     </div>
   );
 }

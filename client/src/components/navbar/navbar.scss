@@ -1,0 +1,38 @@
+$secondaryColor: white;
+$PSC: black;
+
+.container_nav {
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 10vh;
+    background-color:$secondaryColor;
+    justify-content: space-evenly;
+    align-items: center;
+     .nav_logo {  
+        display: flex;  
+        width: 20vw;
+        height: 10vh;   
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('../../assets/pictures/logo_fajaskatty_PNG.png') ;
+        
+     }
+     .Dmenu {
+        flex:1;
+        width: 30vw;
+        display:flex;
+       justify-self: start;
+       justify-content: start;
+       align-self: center;
+       a {
+           margin-left:20px;
+           margin-right: 25px;
+       }
+    }
+    .avatar {
+        align-self: center;
+        margin-right: 20px;
+    }
+
+}

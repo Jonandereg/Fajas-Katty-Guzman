@@ -1,20 +1,31 @@
-import React, {FunctionComponent} from 'react';
+import React, { FunctionComponent } from "react";
+import Gallereact from "gallereact";
+import {Button,DatePicker} from 'antd'
+import "antd/dist/antd.css";
 
-interface TestingProps {myusers:Object[]}
+import './test.scss'
 
-const Testing:FunctionComponent<TestingProps> = ({ myusers }) => {
+interface TestingProps {
+  myusers: Object[];
+}
+function testclick () {
+alert('dont click the button YOU WILL WAKE IT')
+}
 
+const Testing: FunctionComponent<TestingProps> = ({ myusers }) => {
+ 
 
-    return (
-        <>
-        <div>
-        {myusers.map((user:Object)=>{
-            return( <h1> {user.firstName} {user.lastName} {user.email}</h1>)
-        })}
-        </div>
-        </>
-    )
+  return (
+    <>
+      <div>
+        <Button type = 'primary' onClick = {testclick}>
+        this is a button Testing
+        </Button>
+      <DatePicker/>
+       
+      </div>
+    </>
+  );
 };
 
-
-export default Testing
+export default Testing;
