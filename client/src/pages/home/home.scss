@@ -1,5 +1,7 @@
-.Content_Imgs1 {
-    height: 40vh;
-    width: 30vw;
-    background-image: url('../../assets/pictures/jpg-11.jpg');
+.Home_Content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
 }

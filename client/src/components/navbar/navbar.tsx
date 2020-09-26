@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { Menu, Dropdown, Avatar } from 'antd';
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
 
@@ -14,8 +15,12 @@ const menu1 = (
 
 const menu2 = (
   <Menu>
-    <Menu.Item key='1'>1st menu item</Menu.Item>
-    <Menu.Item key='2'>trying new stuf</Menu.Item>
+    <Router>
+      <Menu.Item key='1'>
+        <Link to='/'>just go home you are drunk</Link>
+      </Menu.Item>
+      <Menu.Item key='2'> <Link to='/register'>trying new stuf</Link></Menu.Item>
+    </Router>
   </Menu>
 );
 const menu3 = (
@@ -47,8 +52,12 @@ const Navbar: FunctionComponent = () => {
             </a>
           </Dropdown>
         </div>
-        <div className='avatar'>                   
-          <Avatar style={{ backgroundColor: '#034071' }} icon={<UserOutlined />} />
+        <div className='avatar'>
+          <Avatar style={{ backgroundColor: '#034071' }} icon={<UserOutlined />}>
+            <Router>
+              <Link to='/register'></Link>
+            </Router>
+          </Avatar>
         </div>
       </div>
     </>
