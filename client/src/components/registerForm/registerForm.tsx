@@ -1,8 +1,10 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, } from 'react';
 import { Form, Input, Button, InputNumber, Select, Row, Col, Cascader, Checkbox } from 'antd';
 import './registerForm.scss';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const RegisterForm: FunctionComponent = () => {
+  let history = useHistory();
   type values = {
     email: String;
   };
@@ -52,6 +54,7 @@ const RegisterForm: FunctionComponent = () => {
 
   const onFinish = (values: values) => {
     console.log('Received values of form: ', values);
+    history.push('/')
   };
   const prefixSelector = (
     <Form.Item name='prefix' noStyle>

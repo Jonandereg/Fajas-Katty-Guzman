@@ -1,28 +1,33 @@
 import React, { FunctionComponent } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
-import { Menu, Dropdown, Avatar } from 'antd';
+import { BrowserRouter as Router, Link, Redirect } from 'react-router-dom';
+import { Menu, Dropdown, Avatar, Button } from 'antd';
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
 
 import './navbar.scss';
 
 function handleclick() {
-  alert('test')
+  return <Redirect to= '/register'/>
 }
 
 const menu1 = (
   <Menu>
-    <Menu.Item key='1'onClick={handleclick}>1st menu item</Menu.Item>
+    <Menu.Item key='1' onClick={handleclick}>
+      1st menu item
+    </Menu.Item>
     <Menu.Item key='2'>2nd memu item</Menu.Item>
     <Menu.Item key='3'>3rd menu item</Menu.Item>
   </Menu>
 );
 
 const menu2 = (
-  <Menu>    
-      <Menu.Item key='1'>
-        <Link to='/'>just go home you are drunk</Link>
-      </Menu.Item>
-      <Menu.Item key='2'> <Link to='/register'>trying new stuf</Link></Menu.Item>    
+  <Menu>
+    <Menu.Item key='1'>
+      <Link to='/'>just go home you are drunk</Link>
+    </Menu.Item>
+    <Menu.Item key='2'>
+      {' '}
+      <Link to='/register'>trying new stuf</Link>
+    </Menu.Item>
   </Menu>
 );
 const menu3 = (
@@ -36,7 +41,7 @@ const Navbar: FunctionComponent = () => {
   return (
     <>
       <div className='container_nav'>
-        <div className='nav_logo'></div>
+      <Link to='/'><div className='nav_logo' ></div></Link>
         <div className='Dmenu'>
           <Dropdown overlay={menu1}>
             <a href='' className='ant-dropdown-link'>
@@ -55,11 +60,9 @@ const Navbar: FunctionComponent = () => {
           </Dropdown>
         </div>
         <div className='avatar'>
-          <Avatar style={{ backgroundColor: '#034071' }} icon={<UserOutlined />}>
-            <Router>
-              <Link to='/register'></Link>
-            </Router>
-          </Avatar>
+        <Link to='/register'> 
+          <Button type='primary' shape='circle' style={{ backgroundColor: '#034071' }} icon={<UserOutlined />} onClick={handleclick}/>                                    
+          </Link>         
         </div>
       </div>
     </>
