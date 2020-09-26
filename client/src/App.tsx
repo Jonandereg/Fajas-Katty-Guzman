@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getUsers } from './services/apiServices';
 import './styles/App.css';
-import Homepage from './pages/home/home';
 import AppRoutes from './routes/router';
 
 function App() {
@@ -13,9 +12,7 @@ function App() {
 
   return (
     <div className='App'>
-      <AppRoutes>
-        <Homepage />
-      </AppRoutes>
+      <AppRoutes/>      
     </div>
   );
 }

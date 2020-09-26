@@ -5,22 +5,24 @@ import { DownOutlined, UserOutlined } from '@ant-design/icons';
 
 import './navbar.scss';
 
+function handleclick() {
+  alert('test')
+}
+
 const menu1 = (
   <Menu>
-    <Menu.Item key='1'>1st menu item</Menu.Item>
+    <Menu.Item key='1'onClick={handleclick}>1st menu item</Menu.Item>
     <Menu.Item key='2'>2nd memu item</Menu.Item>
     <Menu.Item key='3'>3rd menu item</Menu.Item>
   </Menu>
 );
 
 const menu2 = (
-  <Menu>
-    <Router>
+  <Menu>    
       <Menu.Item key='1'>
         <Link to='/'>just go home you are drunk</Link>
       </Menu.Item>
-      <Menu.Item key='2'> <Link to='/register'>trying new stuf</Link></Menu.Item>
-    </Router>
+      <Menu.Item key='2'> <Link to='/register'>trying new stuf</Link></Menu.Item>    
   </Menu>
 );
 const menu3 = (
