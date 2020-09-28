@@ -4,10 +4,11 @@ import { Modal, Button, Input, Space } from 'antd';
 import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { getUser } from '../../services/apiServices';
-import { setUserContext } from '../../App';
+import { setUserContext,UserContext } from '../../App';
 const Login: FunctionComponent = () => {
   let history = useHistory();
   const { findActiveUser } = useContext(setUserContext);
+  const { activeUser } = useContext(UserContext)
 
   const [ModalText, setModalText] = useState('if you havent register please click here');
   const [visible, setVisible] = useState(false);
@@ -36,8 +37,8 @@ const Login: FunctionComponent = () => {
     else if (findActiveUser) {
       findActiveUser(user);      ;
       setVisible(false);
-      setConfirmLoading(false);
-      history.push('/')
+      setConfirmLoading(false);      
+       history.push('/');
     }
   }
 
@@ -46,8 +47,10 @@ const Login: FunctionComponent = () => {
     setVisible(false);
   }
 
-  return (
-    <>
+  function loggedUser(){
+    if(activeUser && activeUser.email==='') {
+      return (
+        <>
       <Button type='primary' shape='circle' style={{ backgroundColor: '#034071' }} icon={<UserOutlined />} onClick={showModal}></Button>
       <Modal title='Login Page' visible={visible} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
         <Space direction='vertical'>
@@ -60,6 +63,25 @@ const Login: FunctionComponent = () => {
           if you havent register please click <Link to='register'>here</Link>
         </p>
       </Modal>
+    </>
+      )
+    }
+    else if (activeUser && activeUser.email === 'admin@gmail.com') {
+      return (
+        <Button type='primary' shape='circle' style={{ backgroundColor: '#034071' }} icon={<UserOutlined />} onClick={()=>{history.push('/admin')}}></Button>
+      )
+    }
+    else {
+      return (
+        <Button type='primary' shape='circle' style={{ backgroundColor: '#034071' }} icon={<UserOutlined />} onClick={()=>{history.push('/profile')}}></Button>
+      )
+    }
+
+  }
+
+  return (
+    <>
+    {loggedUser()}
     </>
   );
 };

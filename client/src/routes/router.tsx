@@ -1,15 +1,19 @@
 import React, { lazy, FunctionComponent } from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
-import Homepage from '../pages/home/home';
-import Registerpage from '../pages/register/register';
+import HomePage from '../pages/home/home';
+import RegisterPage from '../pages/register/register';
+import ProfilePage from '../pages/userProfile/userProfile'
+import AdminPage from '../pages/admin/Admin'
 
 const AppRoutes: FunctionComponent = () => {
   return (
     
       <Switch>
-        <Route path='/register' exact={true} component={Registerpage} />
-        <Route path='/' exact={true} component={Homepage} />
+        <Route path='/admin'  exact={true} component={AdminPage}/>
+        <Route path='/register' exact={true} component={RegisterPage} />
+        <Route path='/profile' exact={true} component={ProfilePage}/>
+        <Route path='/' exact={true} component={HomePage} />
       </Switch>
     
   );

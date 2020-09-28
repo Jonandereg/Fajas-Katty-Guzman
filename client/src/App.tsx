@@ -10,32 +10,40 @@ interface setUserContext {
 interface UserContext {
   activeUser?:User
 }
+interface adminContext {
+  users?:User[]
+}
+export const adminContext = React.createContext<adminContext>({})
 export const setUserContext = React.createContext<setUserContext>({})
 export const UserContext = React.createContext<UserContext>({})
 function App() {
-  const [users, setUsers] = useState([0]);
-  const [activeUser,setActiveUser] = useState({email:'',password:''})
+  const [users, setUsers] = useState([{ email: '', password: '' }]);
+  const [activeUser, setActiveUser] = useState({ email: '', password: '' });
 
   useEffect(() => {
-    getUsers().then((res) => setUsers(res));      
+    getAllUsers();
   }, []);
-
-  const findActiveUser =  (user:User):Promise<User> =>{
-    
-     return getUser(user).then((res)=>{
-       setActiveUser(res)
-       return res
-      })
-  }
+ const getAllUsers =():Promise<[User]> =>{
+   return getUsers().then((res) => {
+     setUsers(res)
+    return res})
+ }
+  const findActiveUser = (user: User): Promise<User> => {
+    return getUser(user).then((res) => {
+      setActiveUser(res);
+      return res;
+    });
+  };
  
   return (
     <div className='App'>
-      <setUserContext.Provider value={{findActiveUser}}>  
-       <UserContext.Provider value= {{activeUser}}> 
-         <AppRoutes/> 
-      </UserContext.Provider>  
-      </setUserContext.Provider>
-         
+      <adminContext.Provider value={{ users }}>
+        <setUserContext.Provider value={{ findActiveUser }}>
+          <UserContext.Provider value={{ activeUser }}>
+            <AppRoutes />
+          </UserContext.Provider>
+        </setUserContext.Provider>
+      </adminContext.Provider>
     </div>
   );
 }

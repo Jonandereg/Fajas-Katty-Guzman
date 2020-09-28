@@ -15,7 +15,8 @@ const Profilepage: FunctionComponent = (props) => {
       <div className='User_Content'>
         <h1>REGISTER RIGHT HERE MF</h1>
         <h2>text</h2>
-        <h3>lorem ipsum</h3>
+      <h3>{activeUser?.firstName} {activeUser?.lastName}</h3>
+      <h3>{activeUser?.age}, {activeUser?.gender}</h3>
         
       </div>
     </>
