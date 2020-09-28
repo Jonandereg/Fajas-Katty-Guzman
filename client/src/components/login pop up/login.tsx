@@ -6,6 +6,7 @@ import { Link, Redirect, useHistory } from 'react-router-dom';
 import { getUser } from '../../services/apiServices';
 import { setUserContext } from '../../App';
 const Login: FunctionComponent = () => {
+  let history = useHistory();
   const { findActiveUser } = useContext(setUserContext);
 
   const [ModalText, setModalText] = useState('if you havent register please click here');
@@ -36,6 +37,7 @@ const Login: FunctionComponent = () => {
       findActiveUser(user);      ;
       setVisible(false);
       setConfirmLoading(false);
+      history.push('/')
     }
   }
 

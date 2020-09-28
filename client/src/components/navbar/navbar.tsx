@@ -42,8 +42,6 @@ const menu3 = (
 
 const Navbar: FunctionComponent = () => {
   const { activeUser } = useContext(UserContext);
-  console.log(activeUser);
-
   const sayHello = () => {
     if (activeUser && activeUser.email === '') return <h1>hello</h1>;
     else if (activeUser) return <h1>{activeUser.firstName}</h1>;
@@ -57,18 +55,18 @@ const Navbar: FunctionComponent = () => {
         </Link>
         <div className='Dmenu'>
           <Dropdown overlay={menu1}>
-            <a href='' className='ant-dropdown-link'>
-              Menu 1 <DownOutlined />
+            <a href='' className='ant-dropdown-link' onClick={e => e.preventDefault()}>
+              Cosmetic Surgery <DownOutlined />
             </a>
           </Dropdown>
           <Dropdown overlay={menu2}>
-            <a href='' className='ant-dropdown-link'>
-              Menu 2 <DownOutlined />
+            <a href='' className='ant-dropdown-link'onClick={e => e.preventDefault()}>
+              Slim <DownOutlined />
             </a>
           </Dropdown>
           <Dropdown overlay={menu3}>
-            <a href='' className='ant-dropdown-link'>
-              Menu 3<DownOutlined />
+            <a href='' className='ant-dropdown-link'onClick={e => e.preventDefault()}>
+              Burns<DownOutlined />
             </a>
           </Dropdown>
         </div>
