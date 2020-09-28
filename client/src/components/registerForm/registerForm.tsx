@@ -1,9 +1,12 @@
-import React, { FunctionComponent, useState, } from 'react';
+import React, { FunctionComponent, useContext} from 'react';
 import { Form, Input, Button, InputNumber, Select, Row, Col, Cascader, Checkbox } from 'antd';
 import './registerForm.scss';
 import { Redirect, useHistory } from 'react-router-dom';
+import { postUser } from '../../services/apiServices';
+import { setUserContext } from '../../App';
 
 const RegisterForm: FunctionComponent = () => {
+  const { findActiveUser } = useContext(setUserContext)
   let history = useHistory();
   type values = {
     email: String;
@@ -52,9 +55,14 @@ const RegisterForm: FunctionComponent = () => {
 
   const [form] = Form.useForm();
 
-  const onFinish = (values: values) => {
+  const onFinish = async (values: values) => {
     console.log('Received values of form: ', values);
-    history.push('/')
+    let user = await postUser(values);
+    if (user.message) alert(user.message);
+    else {
+      if(findActiveUser) findActiveUser(user)
+      history.push('/');
+    }
   };
   const prefixSelector = (
     <Form.Item name='prefix' noStyle>
@@ -89,7 +97,7 @@ const RegisterForm: FunctionComponent = () => {
             <Input />
           </Form.Item>
           <Form.Item
-            name='first Name'
+            name='firstName'
             label='First Name'
             rules={[
               {
@@ -102,7 +110,7 @@ const RegisterForm: FunctionComponent = () => {
             <Input />
           </Form.Item>
           <Form.Item
-            name='Last Name'
+            name='lastName'
             label='Last Name'
             rules={[
               {
@@ -114,21 +122,25 @@ const RegisterForm: FunctionComponent = () => {
           >
             <Input />
           </Form.Item>
-          <Form.Item name='age' label='Age' rules={[{ type: 'number', min: 0, max: 99 },{
+          <Form.Item
+            name='age'
+            label='Age'
+            rules={[
+              { type: 'number', min: 0, max: 99 },
+              {
                 required: true,
                 message: 'Please input your Age!',
-              },]}>
+              },
+            ]}
+          >
             <InputNumber />
           </Form.Item>
-          <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
-          <Select
-            placeholder="Gender"            
-            allowClear
-          >
-            <Option value="male">male</Option>
-            <Option value="female">female</Option>            
-          </Select>
-        </Form.Item>
+          <Form.Item name='gender' label='Gender' rules={[{ required: true }]}>
+            <Select placeholder='Gender' allowClear>
+              <Option value='male'>male</Option>
+              <Option value='female'>female</Option>
+            </Select>
+          </Form.Item>
           <Form.Item
             name='password'
             label='Password'
@@ -165,13 +177,13 @@ const RegisterForm: FunctionComponent = () => {
           >
             <Input.Password />
           </Form.Item>
-          <Form.Item name='residence' label='Habitual Residence' rules={[{ type: 'array', required: true, message: 'Please select your habitual residence!' }]}>
+          <Form.Item name='address1' label='Habitual Residence' rules={[{ type: 'array', required: true, message: 'Please select your habitual residence!' }]}>
             <Cascader options={residences} />
           </Form.Item>
-          <Form.Item name='phone' label='Phone Number' rules={[{ required: true, message: 'Please input your phone number!' }]}>
+          <Form.Item name='phoneNumber' label='Phone Number' rules={[{ required: true, message: 'Please input your phone number!' }]}>
             <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
           </Form.Item>
-          <Form.Item name='Mobile' label='Mobile Number' rules={[{ required: true, message: 'Please input your Mobile number!' }]}>
+          <Form.Item name='mobileNumber' label='Mobile Number' rules={[{ required: true, message: 'Please input your Mobile number!' }]}>
             <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
           </Form.Item>
           <Form.Item

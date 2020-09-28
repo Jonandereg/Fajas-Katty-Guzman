@@ -20,8 +20,7 @@ const Homepage:FunctionComponent = (props) => {
          <div className="Content_Imgs1"style={{ width: '40vw', height: '60vh' }}> 
           <Gallereact images={images}/>
          </div>
-        </div>
-        
+        </div>        
         <Footer/>
         </>
     )

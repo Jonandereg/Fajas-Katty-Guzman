@@ -1,12 +1,15 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useContext } from 'react';
 import { BrowserRouter as Router, Link, Redirect } from 'react-router-dom';
 import { Menu, Dropdown, Avatar, Button } from 'antd';
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import Login from '../login pop up/login';
+import User from '../../types/user';
 
 import './navbar.scss';
+import { UserContext } from '../../App';
 
 function handleclick() {
-  return <Redirect to= '/register'/>
+  return <Redirect to='/register' />;
 }
 
 const menu1 = (
@@ -38,10 +41,20 @@ const menu3 = (
 );
 
 const Navbar: FunctionComponent = () => {
+  const { activeUser } = useContext(UserContext);
+  console.log(activeUser);
+
+  const sayHello = () => {
+    if (activeUser && activeUser.email === '') return <h1>hello</h1>;
+    else if (activeUser) return <h1>{activeUser.firstName}</h1>;
+  };
+
   return (
     <>
       <div className='container_nav'>
-      <Link to='/'><div className='nav_logo' ></div></Link>
+        <Link to='/'>
+          <div className='nav_logo'></div>
+        </Link>
         <div className='Dmenu'>
           <Dropdown overlay={menu1}>
             <a href='' className='ant-dropdown-link'>
@@ -59,10 +72,9 @@ const Navbar: FunctionComponent = () => {
             </a>
           </Dropdown>
         </div>
+        {sayHello()}        
         <div className='avatar'>
-        <Link to='/register'> 
-          <Button type='primary' shape='circle' style={{ backgroundColor: '#034071' }} icon={<UserOutlined />} onClick={handleclick}/>                                    
-          </Link>         
+          <Login />
         </div>
       </div>
     </>

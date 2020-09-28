@@ -13,8 +13,18 @@ export const getUsers = () => {
   return fetchRequest('users');
 };
 
-export const postEvent = (body:Object) => {
+export const postUser = (body:Object) => {
   return fetchRequest('register',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+};
+
+export const getUser = (body:Object) => {   
+  return fetchRequest('login',{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

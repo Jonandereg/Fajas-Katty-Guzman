@@ -15,7 +15,7 @@ const Registerpage: FunctionComponent = (props) => {
         <h1>REGISTER RIGHT HERE MF</h1>
         <h2>text</h2>
         <h3>lorem ipsum</h3>
-        <RegisterForm/>
+        <RegisterForm />
       </div>
     </>
   );
