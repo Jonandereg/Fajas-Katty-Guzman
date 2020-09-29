@@ -1,3 +1,4 @@
+import User from '../types/user'
 const BASE_URL = 'http://localhost:3001/';
 
 const fetchRequest = (url:String,options?:Object) => {
@@ -32,3 +33,14 @@ export const getUser = (body:Object) => {
     body: JSON.stringify(body),
   });
 };
+
+export const updateServerUser = (body:User) => {
+  return fetchRequest(`${body._id}`,{
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+}

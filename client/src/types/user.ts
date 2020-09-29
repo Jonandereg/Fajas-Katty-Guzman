@@ -1,7 +1,7 @@
 
 
 type User = {
-
+  _id?:string,
   email:string,
   password:string,
   firstName?:string,
@@ -13,8 +13,8 @@ type User = {
   address?: String,
   alergies?: String,
   SpecialConsiderations?: SpecialConsiderations,
-  measurements?: [Measurements],
-  orders?: [Orders]
+  measurements?: Measurements[],
+  orders?: Orders[]
 }
 
 
@@ -34,7 +34,7 @@ type SpecialConsiderations = {
 }
 
 type Measurements = {
-  date: Date,
+  date?: Date,
   siza?: Number,
   tiro?: Number,
   bustSize?: Number,
