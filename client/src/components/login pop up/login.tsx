@@ -52,15 +52,14 @@ const Login: FunctionComponent = () => {
       return (
         <>
       <Button type='primary' shape='circle' style={{ backgroundColor: '#034071' }} icon={<UserOutlined />} onClick={showModal}></Button>
-      <Modal title='Login Page' visible={visible} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
-        <Space direction='vertical'>
+      <Modal title='Login Page' visible={visible} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel} bodyStyle={{ width: '25vw', height: '60vh',backgroundColor:'blue'}}>
+        <Space direction='horizontal'>
           <Input type='email' value={email} placeholder='Enter your email' onChange={handleEmail} prefix={<UserOutlined className='site-form-item-icon' />} />
           <Input.Password placeholder='input password' iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} onChange={handlePass} />
         </Space>
         <br />
-        <p>
-          {' '}
-          if you havent register please click <Link to='register'>here</Link>
+        <p>          
+          if you havent register please click <Link to='register'>here</Link>          
         </p>
       </Modal>
     </>

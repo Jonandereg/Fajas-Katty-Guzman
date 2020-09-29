@@ -14,11 +14,11 @@ function handleclick() {
 
 const menu1 = (
   <Menu>
-    <Menu.Item key='1' onClick={handleclick}>
-      1st menu item
+    <Menu.Item key='1'>
+     <Link to='/product/1'>generic Item</Link> 
     </Menu.Item>
-    <Menu.Item key='2'>2nd memu item</Menu.Item>
-    <Menu.Item key='3'>3rd menu item</Menu.Item>
+    <Menu.Item key='2'><Link to='/product/2'>generic Item 2</Link> </Menu.Item>
+    <Menu.Item key='3'><Link to='/product/3'>generic Item3</Link> </Menu.Item>
   </Menu>
 );
 
