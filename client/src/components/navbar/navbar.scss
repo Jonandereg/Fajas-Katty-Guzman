@@ -10,6 +10,7 @@ $PSC: black;
     color: black;
     justify-content: space-evenly;
     align-items: center;
+    font-size: calc(5px + 2vmin);
     z-index: 10;
      .nav_logo {  
         display: flex;  
@@ -32,9 +33,15 @@ $PSC: black;
            margin-right: 25px;
        }
     }
+    .Hello{
+        margin-top: 2vh;
+       align-self: center; 
+    }
     .avatar {
         align-self: center;
         margin-right: 20px;
+        margin-left: 10px;
+        
     }
 
 }

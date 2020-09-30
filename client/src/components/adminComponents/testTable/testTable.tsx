@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{FunctionComponent,useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
@@ -14,43 +14,54 @@ import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
-const useRowStyles = makeStyles({
-  root: {
-    '& > *': {
-      borderBottom: 'unset',
+import { adminContext } from '../../../App'
+import moment from 'moment'
+
+const UserTable:FunctionComponent = ()=> {
+  const { users } = useContext(adminContext)
+  
+  const useRowStyles = makeStyles({
+    root: {
+      '& > *': {
+        borderBottom: 'unset',
+      },
     },
-  },
-});
-
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-  price: number,
-) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      { date: '2020-01-05', customerId: '11091700', amount: 3 },
-      { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
-    ],
-  };
-}
-
-function Row(props: { row: ReturnType<typeof createData> }) {
-  const { row } = props;
-  const [open, setOpen] = React.useState(false);
-  const classes = useRowStyles();
-
-  return (
-    <React.Fragment>
+  });
+  
+  
+  function createData(
+    firstName: any,
+    lastName: any,
+    age: number|undefined,
+    gender: string|undefined,
+    email: string|undefined,
+    mobile: string|undefined,
+    ) {
+      let history =[
+        { date: '2020-09-29', model: 'notAmodel1000', amount: 3 },
+        { date: '2020-09-29', model: 'notAmodel3000', amount: 1 },
+      ]
+      let mytest =[]
+      let thisUser = users?.find(user=> user.firstName&& user.email==email)
+      if (thisUser &&thisUser.orders && thisUser.orders.length>0) mytest.push(thisUser.orders[0])
+      return {
+        firstName,
+        lastName,
+        age,
+        gender,
+        email,
+        mobile,
+        history: mytest,
+      };
+    }
+    
+    function Row(props: { row: ReturnType<typeof createData> }) {
+      const { row } = props;
+      const [open, setOpen] = React.useState(false);
+      const classes = useRowStyles();
+      
+      return (
+        <React.Fragment>
       <TableRow className={classes.root}>
         <TableCell>
           <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
@@ -58,12 +69,13 @@ function Row(props: { row: ReturnType<typeof createData> }) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.name}
+          {row.firstName}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell align="right">{row.lastName}</TableCell>
+        <TableCell align="right">{row.age}</TableCell>
+        <TableCell align="right">{row.gender}</TableCell>
+        <TableCell align="right">{row.email}</TableCell>
+        <TableCell align="right">{row.mobile}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -76,21 +88,20 @@ function Row(props: { row: ReturnType<typeof createData> }) {
                 <TableHead>
                   <TableRow>
                     <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell>Model</TableCell>
+                    <TableCell align="right">Amount</TableCell>                   
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
+                    <TableRow key={moment(historyRow.date).format('h:mm a - MMMM Do YYYY')}>
                       <TableCell component="th" scope="row">
                         {historyRow.date}
                       </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
+                      <TableCell>{historyRow.model}</TableCell>
+                      <TableCell align="right">{historyRow.quantity}</TableCell>
                       <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
+                        {}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -103,35 +114,34 @@ function Row(props: { row: ReturnType<typeof createData> }) {
     </React.Fragment>
   );
 }
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 3.99),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
-  createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
-  createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-  createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
-];
-
-export default function CollapsibleTable() {
+  let rows = [
+    createData('smoke', 'mirrors', 60, 'male', 'thenightmare@seventhHell.com', '3.99'),   
+  ];
+  
+  
+  users?.forEach(user=>{rows.push(createData(user.firstName,user.lastName,user.age,user.gender,user.email,user.mobileNumber))})
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>First Name</TableCell>
+            <TableCell align="right">Last Name</TableCell>
+            <TableCell align="right">Age</TableCell>
+            <TableCell align="right">Gender</TableCell>
+            <TableCell align="right">email</TableCell>
+            <TableCell align="right">Mobile Number</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <Row key={row.name} row={row} />
+            <Row key={row.firstName} row={row} />
           ))}
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
+
+export default UserTable

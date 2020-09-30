@@ -1,9 +1,13 @@
 .Product_Container {
+  padding: 2.5vh;
   display: flex;
   flex-direction: column;
+  h1{
+    margin-left:2vw;
+  }
   .Container_Imgs {
-    width: 20vw;
     height: 30vh;
+    width: 15vw;
     position: relative;
     display: inline-block;
     
@@ -11,9 +15,10 @@
 }
 .Container_Imgs .img-top{
   display: none;
+  float: left;
   position: absolute;
   top: 0;
-  left: 2.5vw;
+  left: 0;
   z-index: 99;
 }
 .Container_Imgs:hover .img-top {
@@ -21,5 +26,12 @@
 }
 
 img{  
+  border-radius: 7%;
+  float: left;
   height: 30vh;
+}
+
+.Container_Text {
+  
+  width: 60vw;
 }

@@ -12,8 +12,7 @@ const AdminPage: FunctionComponent = () => {
       <Navbar />
       <div className='Home_Content'>
         <SideMenu />
-        <div className='heroContent'>
-       <TestTable/>
+        <div className='heroContent'>       
         </div>
       </div>      
     </>

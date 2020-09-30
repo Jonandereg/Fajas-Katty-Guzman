@@ -18,7 +18,7 @@ const Homepage: FunctionComponent = (props) => {
 
   const images2 = [image4, image5, image6];
 
-  const images3 = [image7,image8,image9]
+  const images3 = [image7, image8, image9];
 
   return (
     <>
@@ -32,11 +32,13 @@ const Homepage: FunctionComponent = (props) => {
             <Gallereact images={images2} autoPlay={true} displayArrows={false} display duration={4000} displayDot={false} />
           </div>
           <div className='Content_Imgs1' style={{ width: '25vw', height: '60vh' }}>
-            <Gallereact images={images3} autoPlay={true} displayArrows={false} duration={4000} displayDot={false}/>
+            <Gallereact images={images3} autoPlay={true} displayArrows={false} duration={4000} displayDot={false} />
           </div>
         </div>
       </div>
-      <Footer />
+      <div className='footer'>
+        <Footer />
+      </div>
     </>
   );
 };

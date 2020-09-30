@@ -43,8 +43,8 @@ const menu3 = (
 const Navbar: FunctionComponent = () => {
   const { activeUser } = useContext(UserContext);
   const sayHello = () => {
-    if (activeUser && activeUser.email === '') return <h1>hello</h1>;
-    else if (activeUser) return <h1>{activeUser.firstName}</h1>;
+    if (activeUser && activeUser.email === '') return <h4>hello, Please Log in!</h4>;
+    else if (activeUser) return <h4>Welcome Back {activeUser.firstName}!</h4>;
   };
 
   return (
@@ -70,7 +70,10 @@ const Navbar: FunctionComponent = () => {
             </a>
           </Dropdown>
         </div>
-        {sayHello()}        
+        <div className="Hello">
+        {sayHello()}    
+        </div>
+
         <div className='avatar'>
           <Login />
         </div>

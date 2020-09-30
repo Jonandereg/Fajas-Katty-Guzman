@@ -18,7 +18,7 @@ type User = {
 }
 
 
-type Orders = {
+ export type Orders = {
   date: Date,
   model: String,
   quantity: Number,

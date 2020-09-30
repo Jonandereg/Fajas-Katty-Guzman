@@ -1,7 +1,7 @@
 import React, { FunctionComponent,useState,useContext } from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {  DesktopOutlined, PieChartOutlined,  FileOutlined,  TeamOutlined,  UserOutlined,} from '@ant-design/icons';
-import UsersTable from '../usersTable/usersTable'
+import UserTable from '../testTable/testTable'
 import './sideMenu.scss'
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -44,7 +44,7 @@ const SideMenu:FunctionComponent= ()=> {
           <Content style={{ margin: '0 16px' }}>
             
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              <UsersTable/>
+            <UserTable/>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>

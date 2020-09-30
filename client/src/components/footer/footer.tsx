@@ -5,14 +5,21 @@ import './footer.scss'
 const Footer:FunctionComponent = () => {
 
 return (
-    <>
-    <div className="container">
-        <h3><PhoneOutlined /> Call us at 6969HOT!</h3>
-        <h3><EnvironmentOutlined /> We are EVERYWHERE</h3>
-        <h3><FacebookOutlined /> WAITING FOR JAUME,STEP IT UP BRO</h3>
+  <>
+    <div className='container'>
+      <h4>
+        <PhoneOutlined /> Call us at 6969HOT!
+      </h4>
+      <h4>
+        <EnvironmentOutlined /> We are EVERYWHERE
+      </h4>
+      <h4>
+        <FacebookOutlined /> WAITING FOR JAUME,STEP IT UP BRO
+      </h4>
+    
     </div>
-    </>
-)
+  </>
+);
 
 }
 
