@@ -59,7 +59,7 @@ const Login: FunctionComponent = () => {
         </Space>
         <br />
         <p>          
-          if you havent register please click <Link to='register'>here</Link>          
+          if you havent register please click <Link to='/register'>here</Link>          
         </p>
       </Modal>
     </>

@@ -78,7 +78,7 @@ const RegisterForm: FunctionComponent = () => {
 
   return (
     <>
-      <div className='container'>
+      <div className='Container_RegisterForm'>
         <Form {...formItemLayout} form={form} name='register' onFinish={onFinish} scrollToFirstError>
           <Form.Item
             name='email'

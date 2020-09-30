@@ -15,28 +15,27 @@ function handleclick() {
 const menu1 = (
   <Menu>
     <Menu.Item key='1'>
-     <Link to='/product/1'>generic Item</Link> 
+     <Link to='/product/2'>Faja a media pierna con espalda</Link> 
     </Menu.Item>
-    <Menu.Item key='2'><Link to='/product/2'>generic Item 2</Link> </Menu.Item>
-    <Menu.Item key='3'><Link to='/product/3'>generic Item3</Link> </Menu.Item>
+    <Menu.Item key='2'><Link to='/product/3'>Faja con sosten integrado</Link> </Menu.Item>
+    <Menu.Item key='3'><Link to='/product/4'>Sosten con soporte en la espalda</Link> </Menu.Item>
   </Menu>
 );
 
 const menu2 = (
   <Menu>
     <Menu.Item key='1'>
-      <Link to='/'>just go home you are drunk</Link>
+      <Link to='/product/1'>Faja deportiva</Link>
     </Menu.Item>
     <Menu.Item key='2'>
       {' '}
-      <Link to='/register'>trying new stuf</Link>
+      <Link to='/product/7'>Faja Moldeadora</Link>
     </Menu.Item>
   </Menu>
 );
 const menu3 = (
   <Menu>
-    <Menu.Item key='1'>third thing weird menu stuff</Menu.Item>
-    <Menu.Item key='2'>trying new stuf</Menu.Item>
+    <Menu.Item key='1'>guantes para quemados</Menu.Item>  
   </Menu>
 );
 
