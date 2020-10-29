@@ -1,5 +1,5 @@
 
-# CheapifyMe
+# Fajas Katty Guzman
 <p align="center">
   <img src=".client/public/logo.png" width="300">
  </p> 
