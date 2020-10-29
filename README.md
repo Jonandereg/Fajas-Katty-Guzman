@@ -1,7 +1,7 @@
 
 # Fajas Katty Guzman
 <p align="center">
-  <img src=".client/public/logo.png" width="300">
+  <img src="https://github.com/Jonandereg/Fajas-Katty-Guzman/blob/master/client/public/logo.png" width="300">
  </p> 
   
 Fajas Katty Guzman is a small custom size compression garment bussines in venezuela, and this web app is designed so that users can select the product they desire and provide their unique measurements with instructions on how to take those measurements, and the bussines owner receive the order with user Data.
